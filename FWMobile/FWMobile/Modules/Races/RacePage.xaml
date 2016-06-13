@@ -5,7 +5,29 @@
   <ContentPage.Content>
     <StackLayout>
       <Button Margin="10,10,10,10" Command="{Binding MakePicksCommand}" Text="Make My Picks" ></Button>
-      <Label HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="14" Text="Race Details" ></Label>
+      <Label HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="24" Text="Race Details" ></Label>
+      <StackLayout Padding="10, 0, 0, 0" Orientation="Horizontal">
+        <Label VerticalOptions="End" HorizontalOptions="Start" Text="Current Forecast" FontSize="20"></Label>
+        <Label VerticalOptions="End" HorizontalOptions="StartAndExpand" Text="(Provided by Dark Sky Forecast)" FontSize="10"></Label>
+      </StackLayout>
+      <Label Margin="10, 0, 0, 0" FontSize="16" Text="Temperature" FontAttributes="Bold"></Label>
+      <StackLayout Padding="10, 0, 0, 0" Orientation="Horizontal">
+        <Label HorizontalOptions="Start" Text="Temperature Low / High (°C): " FontSize="14" FontAttributes="Bold"></Label>
+        <Label HorizontalOptions="Start" Text="{Binding MinTemperature}" FontSize="14" ></Label>
+        <Label HorizontalOptions="Start" Text="/" FontSize="14"></Label>
+        <Label HorizontalOptions="Start" FontSize="14" Text="{Binding MaxTemperature}"></Label>
+      </StackLayout>
+      <Label Margin="10, 0, 0, 0" Text="Precipitation" FontSize="16" FontAttributes="Bold"></Label>
+      <StackLayout Padding="10, 0, 0, 0" Orientation="Horizontal">
+        <Label HorizontalOptions="Start" Text="Type: " FontSize="14" FontAttributes="Bold"></Label>
+        <Label HorizontalOptions="Start" Text="{Binding PrecipitationType}" FontSize="14"></Label>
+      </StackLayout>
+      <StackLayout Padding="10, 0, 0, 0" Orientation="Horizontal">
+        <Label HorizontalOptions="Start" Text="Chance: " FontSize="14" FontAttributes="Bold"></Label>
+        <Label HorizontalOptions="Start" Text="{Binding ChancePrecipitation}" FontSize="14"></Label>
+      </StackLayout>
+      <Label FontSize="20" Text="History"></Label>
+      
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

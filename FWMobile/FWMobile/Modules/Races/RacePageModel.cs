@@ -21,6 +21,12 @@ namespace FWMobile.Modules.Races
         private IUserDialogs _userDialogs;
 
         public Race Race { get; set; }
+        public DayForecast Forecast { get; set; }
+        public string MinTemperature { get; set; }
+        public string MaxTemperature { get; set; }
+        public string ChancePrecipitation { get; set; }
+        public string PrecipitationType { get; set; }
+        public string PrecipitationIntensity { get; set; }
         public ICommand MakePicksCommand { get; set; }
 
         public RacePageModel(IDataService dataService, IWeatherService weatherService, IUserDialogs userDialogs)
@@ -45,9 +51,17 @@ namespace FWMobile.Modules.Races
                 IList<DayForecast> dayForecasts = null;
                 if (Race.RaceDate != DateTime.MinValue)
                 {
-                    
                     DateTimeOffset raceDate = new DateTimeOffset(Race.RaceDate);
                     dayForecasts = await _weatherService.GetForecast(Race.Latitude, Race.Longitude, raceDate);
+                    if (dayForecasts != null && dayForecasts.Count > 0)
+                    {
+                        Forecast = dayForecasts[0];
+                        MinTemperature = Forecast.MinTemperature.ToString("N1");
+                        MaxTemperature = Forecast.MaxTemperature.ToString("N1");
+                        ChancePrecipitation = Forecast.PrecipitationProbability.ToString("P1");
+                        PrecipitationType = Forecast.PrecipitationType;
+                        PrecipitationIntensity = Forecast.PrecipitationIntensity.ToString("N0");
+                    }
                 }
                 else
                 {

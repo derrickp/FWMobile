@@ -14,7 +14,7 @@ namespace FWMobile.Infrastructure.Services
 {
     public class RestService : IRestService
     {
-        private string _baseUrl = "http://192.168.0.15:3000";
+        private string _baseUrl = "http://192.168.0.15:32187";
         private JsonSerializerSettings _jsonSettings = new JsonSerializerSettings()
         {
             ContractResolver = new CamelCasePropertyNamesContractResolver(),
